@@ -1,0 +1,19 @@
+{
+  "name": "go-htmx-feature",
+  "description": "Build features in stdlib Go + HTMX apps with a single JSON state file: schema migrations, phone-first handlers and templates, tests, and Go pre-push checks.",
+  "author": {
+    "name": "Caboose AI"
+  },
+  "homepage": "https://github.com/caboose-ai/ai-skills/tree/main/go-htmx-feature",
+  "repository": "https://github.com/caboose-ai/ai-skills",
+  "license": "MIT",
+  "keywords": [
+    "go",
+    "htmx",
+    "feature",
+    "phone-first"
+  ],
+  "skills": [
+    "./"
+  ]
+}

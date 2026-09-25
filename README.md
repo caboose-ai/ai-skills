@@ -23,6 +23,9 @@ claude plugin install repo-agent-guidance-generator@caboose-ai-skills
 claude plugin install session-start-git-triage@caboose-ai-skills
 claude plugin install code-pattern-analysis@caboose-ai-skills
 claude plugin install pre-pr-review-loop@caboose-ai-skills
+claude plugin install go-htmx-feature@caboose-ai-skills
+claude plugin install phone-width-verify@caboose-ai-skills
+claude plugin install k3s-local-release@caboose-ai-skills
 ```
 
 Plugin skills are namespaced by plugin, so `repo-agent-guidance-generator` exposes `/repo-agent-guidance-generator:repo-agent-guidance-generator`.
@@ -144,6 +147,54 @@ npx skills add caboose-ai/ai-skills@pre-pr-review-loop -g
 
 See [pre-pr-review-loop/README.md](pre-pr-review-loop/README.md) for details.
 
+### Go + HTMX Feature
+
+Build features in stdlib-only Go + HTMX apps that persist to a single JSON state file: schema version bump and migration, phone-safe handlers and templates, tests, and Go pre-push checks.
+
+```bash
+claude plugin install go-htmx-feature@caboose-ai-skills
+```
+
+Standalone skill install:
+
+```bash
+npx skills add caboose-ai/ai-skills@go-htmx-feature -g
+```
+
+See [go-htmx-feature/README.md](go-htmx-feature/README.md) for details.
+
+### Phone Width Verify
+
+Run a web app locally and check a change in a real browser at phone width, in light and dark mode, with a horizontal-overflow check.
+
+```bash
+claude plugin install phone-width-verify@caboose-ai-skills
+```
+
+Standalone skill install:
+
+```bash
+npx skills add caboose-ai/ai-skills@phone-width-verify -g
+```
+
+See [phone-width-verify/README.md](phone-width-verify/README.md) for details.
+
+### k3s Local-Registry Release
+
+Release single-binary apps to a single-node k3s cluster through a node-local registry: versioning, manifest bump, state backup, build, apply, verify, and rollback.
+
+```bash
+claude plugin install k3s-local-release@caboose-ai-skills
+```
+
+Standalone skill install:
+
+```bash
+npx skills add caboose-ai/ai-skills@k3s-local-release -g
+```
+
+See [k3s-local-release/README.md](k3s-local-release/README.md) for details.
+
 ## Repository Layout
 
 - `.claude-plugin/marketplace.json`: Claude Code plugin marketplace catalog.
@@ -154,6 +205,9 @@ See [pre-pr-review-loop/README.md](pre-pr-review-loop/README.md) for details.
 - `code-pattern-analysis/`: read-only repository code pattern and convention analyzer.
 - `session-start-git-triage/`: Git branch and dirty-work triage at session start or resume.
 - `pre-pr-review-loop/`: local review, Codex review, and PR handoff workflow.
+- `go-htmx-feature/`: feature workflow for stdlib Go + HTMX single-state-file apps.
+- `phone-width-verify/`: local run and phone-width screenshot verification.
+- `k3s-local-release/`: release workflow for k3s apps on a node-local registry.
 
 ## License
 
