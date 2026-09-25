@@ -1,0 +1,19 @@
+{
+  "name": "k3s-local-release",
+  "description": "Release single-binary apps to a single-node k3s cluster via a node-local registry: versioning, manifest bump, build, apply, verify, rollback.",
+  "author": {
+    "name": "Caboose AI"
+  },
+  "homepage": "https://github.com/caboose-ai/ai-skills/tree/main/k3s-local-release",
+  "repository": "https://github.com/caboose-ai/ai-skills",
+  "license": "MIT",
+  "keywords": [
+    "k3s",
+    "kubernetes",
+    "release",
+    "deploy"
+  ],
+  "skills": [
+    "./"
+  ]
+}

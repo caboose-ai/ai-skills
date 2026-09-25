@@ -1,0 +1,19 @@
+{
+  "name": "phone-width-verify",
+  "description": "Run a web app locally and verify changes in a real browser at phone width, light and dark, with an overflow check.",
+  "author": {
+    "name": "Caboose AI"
+  },
+  "homepage": "https://github.com/caboose-ai/ai-skills/tree/main/phone-width-verify",
+  "repository": "https://github.com/caboose-ai/ai-skills",
+  "license": "MIT",
+  "keywords": [
+    "playwright",
+    "mobile",
+    "screenshots",
+    "verification"
+  ],
+  "skills": [
+    "./"
+  ]
+}
