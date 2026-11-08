@@ -1,0 +1,20 @@
+{
+  "name": "op-secrets-flow",
+  "description": "Move secrets from 1Password into commands, Kubernetes Secrets and systemd timers through the op CLI without the agent ever seeing a value: session files, .env.op references, op run, and the traps that produce empty secrets.",
+  "author": {
+    "name": "Caboose AI"
+  },
+  "homepage": "https://github.com/caboose-ai/ai-skills/tree/main/op-secrets-flow",
+  "repository": "https://github.com/caboose-ai/ai-skills",
+  "license": "MIT",
+  "keywords": [
+    "1password",
+    "secrets",
+    "op",
+    "kubernetes",
+    "systemd"
+  ],
+  "skills": [
+    "./"
+  ]
+}

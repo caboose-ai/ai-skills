@@ -29,6 +29,18 @@ Building and applying need the k3s node: `docker`, the registry at
 of these. There, do steps 1–2 in a PR and hand the user the exact commands
 for steps 3–6. Never claim a deploy happened that you did not see.
 
+## Tags and the IfNotPresent trap
+
+Image tags are `vX.Y.Z-caN`: the app version, then a build counter
+(`-ca1`, `-ca2`, ...) for rebuilds of the same version. The manifests pull
+`IfNotPresent`, so re-pushing an existing tag deploys the node's cached old
+image and nothing tells you. Never reuse a tag; bump `N`. Before building,
+see what the registry already holds:
+
+```bash
+curl -s localhost:5000/v2/<app>/tags/list
+```
+
 ## Workflow
 
 1. **Pick the version.** Minor per milestone (`v0.N.0`), patch for fixes in
@@ -73,6 +85,31 @@ for steps 3–6. Never claim a deploy happened that you did not see.
    - After a schema bump, the pod logs show a clean start and the feature's
      main flow works on a phone.
    - Remove any test records you created.
+
+## CronJobs and one-off pods
+
+Batch apps (hourly pollers, nightly backups) ship as a CronJob writing to a
+PVC instead of a Deployment. What changes:
+
+- The PVC binds on the first job (`local-path` is WaitForFirstConsumer); a
+  `Pending` claim before any job has run is normal.
+- There is no rollout to watch. Trigger one run and read it; job names must
+  be unique, so count manual runs up:
+  ```bash
+  kubectl -n <ns> create job --from=cronjob/<name> <name>-manual-1
+  kubectl -n <ns> wait --for=condition=complete job/<name>-manual-1 --timeout=600s
+  kubectl -n <ns> logs job/<name>-manual-1
+  ```
+- A job that exits with `KEY is required` while the Secret exists means the
+  Secret's values are empty (see the `op-secrets-flow` skill). Delete and
+  recreate it; do not patch.
+- Read-only commands against the PVC run as a throwaway pod with the same
+  image, user and claim (`kubectl run --rm -i --restart=Never` with an
+  `--overrides` JSON naming the claim); keep that exact one-liner in the
+  app's README so nobody retypes it.
+- `concurrencyPolicy: Forbid` only serialises scheduled runs; a manual job
+  can overlap one, so the app must tolerate a second writer (SQLite in WAL
+  mode with a busy timeout does).
 
 ## Rollback
 
