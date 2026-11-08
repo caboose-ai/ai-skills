@@ -26,6 +26,7 @@ claude plugin install pre-pr-review-loop@caboose-ai-skills
 claude plugin install go-htmx-feature@caboose-ai-skills
 claude plugin install phone-width-verify@caboose-ai-skills
 claude plugin install k3s-local-release@caboose-ai-skills
+claude plugin install op-secrets-flow@caboose-ai-skills
 ```
 
 Plugin skills are namespaced by plugin, so `repo-agent-guidance-generator` exposes `/repo-agent-guidance-generator:repo-agent-guidance-generator`.
@@ -185,6 +186,7 @@ Release single-binary apps to a single-node k3s cluster through a node-local reg
 
 ```bash
 claude plugin install k3s-local-release@caboose-ai-skills
+claude plugin install op-secrets-flow@caboose-ai-skills
 ```
 
 Standalone skill install:
